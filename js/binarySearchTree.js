@@ -51,7 +51,7 @@ export function Tree(arr) {
     } else {
       node.right = helperInsert(value, node.right);
     }
-    console.log(root);
+
     return node;
   };
 

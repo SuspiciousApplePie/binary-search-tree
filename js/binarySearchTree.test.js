@@ -29,4 +29,16 @@ describe("Insert test", () => {
     tree.insert(5);
     expect(tree.includes(5)).toBe(true);
   });
+
+  test("Check higher number work in multiple data array.", () => {
+    const tree = Tree([3, 8, 1, 6, 4]);
+    tree.insert(5);
+    expect(tree.includes(5)).toBe(true);
+  });
+
+  test("Check lower number work in multiple data array.", () => {
+    const tree = Tree([3, 8, 1, 6, 4]);
+    tree.insert(7);
+    expect(tree.includes(7)).toBe(true);
+  });
 });
