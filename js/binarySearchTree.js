@@ -2,7 +2,7 @@ function TreeNode(data, left = null, right = null) {
   return { data, left, right };
 }
 
-function Tree(arr) {
+export function Tree(arr) {
   const root = buildTree(arr);
   function buildTree(arr) {
     if (!arr.length) {
@@ -25,7 +25,27 @@ function Tree(arr) {
     return node;
   }
 
+  const helperIncludes = (value, node) => {
+    let status = false;
+
+    if (!node) return status;
+
+    if (value === node.data) {
+      status = true;
+      return status;
+    }
+
+    if (helperIncludes(value, node.left) || helperIncludes(value, node.right)) {
+      status = true;
+      return status;
+    }
+
+    return status;
+  };
+
   return {
-    includes: (value) => {},
+    includes: (value) => {
+      return helperIncludes(value, root);
+    },
   };
 }
