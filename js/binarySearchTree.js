@@ -43,9 +43,25 @@ export function Tree(arr) {
     return status;
   };
 
+  const helperInsert = (value, node) => {
+    if (helperIncludes(value, root)) return;
+    if (!node) return TreeNode(value);
+    if (value < node.data) {
+      node.left = helperInsert(value, node.left);
+    } else {
+      node.right = helperInsert(value, node.right);
+    }
+    console.log(root);
+    return node;
+  };
+
   return {
     includes: (value) => {
       return helperIncludes(value, root);
+    },
+
+    insert: (value) => {
+      helperInsert(value, root);
     },
   };
 }

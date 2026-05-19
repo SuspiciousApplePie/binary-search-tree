@@ -16,3 +16,17 @@ describe("Includes test", () => {
     expect(tree.includes(4)).toBe(false);
   });
 });
+
+describe("Insert test", () => {
+  test("Check lower number work.", () => {
+    const tree = Tree([5]);
+    tree.insert(3);
+    expect(tree.includes(3)).toBe(true);
+  });
+
+  test("Check higher number work.", () => {
+    const tree = Tree([3]);
+    tree.insert(5);
+    expect(tree.includes(5)).toBe(true);
+  });
+});
