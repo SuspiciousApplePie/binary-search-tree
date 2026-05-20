@@ -55,6 +55,33 @@ export function Tree(arr) {
     return node;
   };
 
+  const getSuccessor = (node) => {
+    let cur = node.right;
+    while (cur.left) {
+      cur = cur.left;
+    }
+    return cur;
+  };
+
+  const helperDeleteItem = (value, node) => {
+    if (!node) return null;
+
+    if (value < node.data) {
+      node.left = helperDeleteItem(value, node.left);
+    } else if (value > node.data) {
+      node.right = helperDeleteItem(value, node.right);
+    }
+
+    if (!node.left) return node.right;
+    if (!node.right) return node.left;
+
+    const succ = getSuccessor(node);
+    node.data = succ.data;
+    node.right = helperDeleteItem(node.data, node.right);
+
+    return node;
+  };
+
   return {
     includes: (value) => {
       return helperIncludes(value, root);
@@ -62,6 +89,11 @@ export function Tree(arr) {
 
     insert: (value) => {
       helperInsert(value, root);
+    },
+    deleteItem: (value) => {
+      console.log(root);
+      helperDeleteItem(value, root);
+      console.log(root);
     },
   };
 }

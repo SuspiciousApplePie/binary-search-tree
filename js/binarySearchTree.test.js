@@ -42,3 +42,30 @@ describe("Insert test", () => {
     expect(tree.includes(7)).toBe(true);
   });
 });
+
+describe("Delete test", () => {
+  test("Delete one node with no child", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70, 80]);
+    tree.deleteItem(20);
+    expect(tree.includes(20)).toBe(false);
+  });
+
+  test("Delete one node with left child", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    tree.deleteItem(20);
+    expect(tree.includes(20)).toBe(false);
+    expect(tree.includes(30)).toBe(true);
+  });
+
+  test("Delete one node with left child in deeper tree", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70, 80, 90, 100]);
+    tree.deleteItem(90);
+    expect(tree.includes(90)).toBe(false);
+  });
+
+  test("Delete one node with TWO child in deeper tree", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70, 80, 90]);
+    tree.deleteItem(70);
+    expect(tree.includes(70)).toBe(false);
+  });
+});
