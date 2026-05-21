@@ -114,9 +114,9 @@ export function Tree(arr) {
       const succ = getSuccessor(node);
       node.data = succ.data;
       node.right = helperDeleteItem(succ.data, node.right);
-
-      return node;
     }
+
+    return node;
   };
 
   return {
@@ -128,9 +128,7 @@ export function Tree(arr) {
       helperInsert(value, root);
     },
     deleteItem: (value) => {
-      console.log(root);
       helperDeleteItem(value, root);
-      console.log(root);
     },
 
     levelOrderForEach: (callback) => {

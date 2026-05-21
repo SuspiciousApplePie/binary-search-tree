@@ -74,6 +74,7 @@ describe("Delete test", () => {
     const tree = Tree([20, 30, 40, 50, 60, 70, 80, 90, 100]);
     tree.deleteItem(90);
     expect(tree.includes(90)).toBe(false);
+    expect(tree.includes(70)).toBe(true);
   });
 
   test("Delete one node with TWO child in deeper tree", () => {
