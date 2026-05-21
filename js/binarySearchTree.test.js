@@ -1,4 +1,17 @@
-import { Tree } from "./binarySearchTree.js";
+import { Tree, Queue, TreeNode } from "./binarySearchTree.js";
+
+describe("Dequeue test", () => {
+  const treeNode = TreeNode(1);
+  const queue = Queue();
+  queue.enqueue(treeNode);
+  test("Dequeue node", () => {
+    expect(queue.dequeue(1)).toStrictEqual({
+      data: 1,
+      left: null,
+      right: null,
+    });
+  });
+});
 
 describe("Includes test", () => {
   test("Contains value in one size", () => {

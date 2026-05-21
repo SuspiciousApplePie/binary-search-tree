@@ -1,4 +1,4 @@
-function TreeNode(data, left = null, right = null) {
+export function TreeNode(data, left = null, right = null) {
   return { data, left, right };
 }
 
@@ -94,6 +94,39 @@ export function Tree(arr) {
       console.log(root);
       helperDeleteItem(value, root);
       console.log(root);
+    },
+
+    levelOrderForEach: (callback) => {},
+  };
+}
+
+export function QueueNode(value = null, nextNode = null) {
+  return {
+    value,
+    nextNode,
+  };
+}
+
+export function Queue() {
+  let head = null;
+  let tail = null;
+
+  return {
+    enqueue: (value) => {
+      if (!head) {
+        head = QueueNode(value);
+        tail = head;
+      } else {
+        tail.nextNode = QueueNode(value);
+        tail = tail.nextNode;
+      }
+    },
+
+    dequeue: (value) => {
+      const dequeuedValue = head.value;
+      head = head.nextNode;
+      if (!head) tail = head;
+      return dequeuedValue;
     },
   };
 }
