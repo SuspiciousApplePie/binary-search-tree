@@ -63,6 +63,20 @@ export function Tree(arr) {
     return cur;
   };
 
+  const helperLevelForEach = (callback, queue = Queue()) => {
+    const dequeuedData = queue.dequeue();
+    if (dequeuedData) {
+      callback(dequeuedData.data);
+      if (dequeuedData.left) {
+        queue.enqueue(dequeuedData.left);
+      }
+      if (dequeuedData.right) {
+        queue.enqueue(dequeuedData.right);
+      }
+      helperLevelForEach(callback, queue);
+    }
+  };
+
   const helperDeleteItem = (value, node) => {
     if (!node) return null;
 
@@ -96,7 +110,11 @@ export function Tree(arr) {
       console.log(root);
     },
 
-    levelOrderForEach: (callback) => {},
+    levelOrderForEach: (callback) => {
+      const queue = Queue();
+      queue.enqueue(root);
+      helperLevelForEach(callback, queue);
+    },
   };
 }
 
@@ -122,11 +140,15 @@ export function Queue() {
       }
     },
 
-    dequeue: (value) => {
-      const dequeuedValue = head.value;
-      head = head.nextNode;
-      if (!head) tail = head;
-      return dequeuedValue;
+    dequeue: () => {
+      if (head) {
+        const dequeuedValue = head.value;
+        head = head.nextNode;
+        if (!head) tail = head;
+        return dequeuedValue;
+      }
+
+      return null;
     },
   };
 }

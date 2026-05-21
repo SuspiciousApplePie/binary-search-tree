@@ -82,3 +82,15 @@ describe("Delete test", () => {
     expect(tree.includes(70)).toBe(false);
   });
 });
+
+describe("Level For Each", () => {
+  test.only("Return list of values", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    const values = [];
+    tree.levelOrderForEach((value) => {
+      values.push(value);
+    });
+    console.log(values);
+    expect(values).toStrictEqual([40, 20, 60, 30, 50, 70]);
+  });
+});
