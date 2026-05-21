@@ -84,13 +84,25 @@ describe("Delete test", () => {
 });
 
 describe("Level For Each", () => {
-  test.only("Return list of values", () => {
+  test("Return list of values", () => {
     const tree = Tree([20, 30, 40, 50, 60, 70]);
     const values = [];
     tree.levelOrderForEach((value) => {
       values.push(value);
     });
-    console.log(values);
+
+    expect(values).toStrictEqual([40, 20, 60, 30, 50, 70]);
+  });
+});
+
+describe("Level For Each loop", () => {
+  test("Return list of values", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    const values = [];
+    tree.levelOrderForEachLoop((value) => {
+      values.push(value);
+    });
+
     expect(values).toStrictEqual([40, 20, 60, 30, 50, 70]);
   });
 });

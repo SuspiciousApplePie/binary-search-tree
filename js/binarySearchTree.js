@@ -115,6 +115,22 @@ export function Tree(arr) {
       queue.enqueue(root);
       helperLevelForEach(callback, queue);
     },
+
+    levelOrderForEachLoop: (callback) => {
+      const queue = Queue();
+      queue.enqueue(root);
+
+      while (true) {
+        const dequeuedData = queue.dequeue();
+        if (dequeuedData) {
+          callback(dequeuedData.data);
+          if (dequeuedData.left) queue.enqueue(dequeuedData.left);
+          if (dequeuedData.right) queue.enqueue(dequeuedData.right);
+          continue;
+        }
+        break;
+      }
+    },
   };
 }
 
