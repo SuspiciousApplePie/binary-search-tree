@@ -77,6 +77,29 @@ export function Tree(arr) {
     }
   };
 
+  const helperInOrderForEach = (callback, node) => {
+    if (!node) return;
+
+    helperInOrderForEach(callback, node.left);
+    callback(node.data);
+    helperInOrderForEach(callback, node.right);
+  };
+
+  const helperPreOrderForEach = (callback, node) => {
+    if (!node) return;
+
+    callback(node.data);
+    helperPreOrderForEach(callback, node.left);
+    helperPreOrderForEach(callback, node.right);
+  };
+
+  const helperPostOrder = (callback, node) => {
+    if (!node) return;
+    helperPostOrder(callback, node.left);
+    helperPostOrder(callback, node.right);
+    callback(node.data);
+  };
+
   const helperDeleteItem = (value, node) => {
     if (!node) return null;
 
@@ -130,6 +153,17 @@ export function Tree(arr) {
         }
         break;
       }
+    },
+    inOrderForEach: (callback) => {
+      helperInOrderForEach(callback, root);
+    },
+
+    preOrderForEach: (callback) => {
+      helperPreOrderForEach(callback, root);
+    },
+
+    postOrderForEach: (callback) => {
+      helperPostOrder(callback, root);
     },
   };
 }

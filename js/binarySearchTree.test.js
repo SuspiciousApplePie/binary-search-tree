@@ -106,3 +106,39 @@ describe("Level For Each loop", () => {
     expect(values).toStrictEqual([40, 20, 60, 30, 50, 70]);
   });
 });
+
+describe("Inorder For Each loop", () => {
+  test("Return list of values", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    const values = [];
+    tree.inOrderForEach((value) => {
+      values.push(value);
+    });
+
+    expect(values).toStrictEqual([20, 30, 40, 50, 60, 70]);
+  });
+});
+
+describe("Preorder For Each loop", () => {
+  test("Return list of values", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    const values = [];
+    tree.preOrderForEach((value) => {
+      values.push(value);
+    });
+
+    expect(values).toStrictEqual([40, 20, 30, 60, 50, 70]);
+  });
+});
+
+describe("Postorder For Each loop", () => {
+  test("Return list of values", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    const values = [];
+    tree.postOrderForEach((value) => {
+      values.push(value);
+    });
+
+    expect(values).toStrictEqual([30, 20, 50, 70, 60, 40]);
+  });
+});
