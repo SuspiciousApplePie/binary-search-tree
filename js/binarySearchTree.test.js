@@ -159,4 +159,9 @@ describe("Height", () => {
     const tree = Tree([20, 30, 40, 50, 60, 70]);
     expect(tree.height(30)).toBe(0);
   });
+
+  test("Undefined", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(tree.height(10)).toBe(undefined);
+  });
 });
