@@ -143,3 +143,20 @@ describe("Postorder For Each loop", () => {
     expect(values).toStrictEqual([30, 20, 50, 70, 60, 40]);
   });
 });
+
+describe("Height", () => {
+  test("Height of 20", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(tree.height(20)).toBe(1);
+  });
+
+  test("Height of root", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(tree.height(40)).toBe(2);
+  });
+
+  test("Height of leaf", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(tree.height(30)).toBe(0);
+  });
+});

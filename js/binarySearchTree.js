@@ -119,6 +119,33 @@ export function Tree(arr) {
     return node;
   };
 
+  const find = (value, node) => {
+    if (!node) return;
+
+    if (node.data === value) {
+      return node;
+    }
+
+    const left = find(value, node.left);
+    const right = find(value, node.right);
+
+    if (left) return left;
+    else if (right) return right;
+  };
+
+  const helperHeight = (node, left = 0, right = 0) => {
+    if (node.left) {
+      left++;
+      left += helperHeight(node.left);
+    }
+    if (node.right) {
+      right++;
+      right += helperHeight(node.right);
+    }
+
+    return Math.max(left, right);
+  };
+
   return {
     includes: (value) => {
       return helperIncludes(value, root);
@@ -162,6 +189,11 @@ export function Tree(arr) {
 
     postOrderForEach: (callback) => {
       helperPostOrder(callback, root);
+    },
+
+    height: (value) => {
+      const node = find(value, root);
+      return helperHeight(node);
     },
   };
 }
