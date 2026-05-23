@@ -165,3 +165,25 @@ describe("Height", () => {
     expect(tree.height(10)).toBe(undefined);
   });
 });
+
+describe("Depth", () => {
+  test("Depth of 20", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(tree.depth(20)).toBe(1);
+  });
+
+  test("Depth of root", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(tree.depth(40)).toBe(0);
+  });
+
+  test("Depth of root", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(tree.depth(30)).toBe(2);
+  });
+
+  test("Undefined", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(tree.depth(10)).toBe(undefined);
+  });
+});

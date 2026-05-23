@@ -147,6 +147,18 @@ export function Tree(arr) {
     return Math.max(left, right);
   };
 
+  const helperDepth = (value, node, count = 0) => {
+    if (!node) return;
+    if (node.data > value) {
+      count = helperDepth(value, node.left, ++count);
+    }
+    if (node.data < value) {
+      count = helperDepth(value, node.right, ++count);
+    }
+
+    return count;
+  };
+
   return {
     includes: (value) => {
       return helperIncludes(value, root);
@@ -195,6 +207,10 @@ export function Tree(arr) {
     height: (value) => {
       const node = find(value, root);
       return helperHeight(node);
+    },
+
+    depth: (value) => {
+      return helperDepth(value, root);
     },
   };
 }
