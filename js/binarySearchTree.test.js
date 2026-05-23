@@ -221,6 +221,13 @@ describe("Height", () => {
     expect(tree.height(40)).toBe(2);
   });
 
+  test("Height of root after added", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    tree.insert(10);
+    tree.insert(4);
+    expect(tree.height(40)).toBe(3);
+  });
+
   test("Height of leaf", () => {
     const tree = Tree([20, 30, 40, 50, 60, 70]);
     expect(tree.height(30)).toBe(0);
