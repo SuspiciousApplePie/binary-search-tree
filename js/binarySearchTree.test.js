@@ -187,3 +187,29 @@ describe("Depth", () => {
     expect(tree.depth(10)).toBe(undefined);
   });
 });
+
+describe("Describe", () => {
+  test("Unbalanced right", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    tree.insert(80);
+    tree.insert(75);
+    expect(tree.isBalance()).toBe(false);
+  });
+
+  test("Unbalanced left", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    tree.insert(10);
+    tree.insert(25);
+    expect(tree.isBalance()).toBe(false);
+  });
+
+  test("Balanced", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(tree.isBalance()).toBe(true);
+  });
+
+  test("Undefined", () => {
+    const tree = Tree([]);
+    expect(tree.isBalance()).toBe(undefined);
+  });
+});

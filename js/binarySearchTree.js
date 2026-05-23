@@ -156,6 +156,15 @@ export function Tree(arr) {
     return count;
   };
 
+  const helperIsBalance = (node) => {
+    if (!node) return;
+
+    const result = helperHeight(node.left) - helperHeight(node.right);
+    if (result < 1 && result > -1) {
+      return true;
+    }
+    return false;
+  };
   return {
     includes: (value) => {
       return helperIncludes(value, root);
@@ -203,12 +212,15 @@ export function Tree(arr) {
 
     height: (value) => {
       const node = find(value, root);
-      console.log(node);
       return helperHeight(node);
     },
 
     depth: (value) => {
       return helperDepth(value, root);
+    },
+
+    isBalance: () => {
+      return helperIsBalance(root);
     },
   };
 }
