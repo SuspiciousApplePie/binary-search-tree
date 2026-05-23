@@ -131,7 +131,7 @@ export function Tree(arr) {
   };
 
   const helperHeight = (node, left = 0, right = 0) => {
-    if (!node) return;
+    if (!node) return 0;
     if (node.left) {
       left++;
       left += helperHeight(node.left);
