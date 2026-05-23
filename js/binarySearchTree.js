@@ -122,15 +122,12 @@ export function Tree(arr) {
   const find = (value, node) => {
     if (!node) return;
 
-    if (node.data === value) {
-      return node;
+    if (node.data > value) {
+      node = find(value, node.left);
+    } else if (node.data < value) {
+      node = find(value, node.right);
     }
-
-    const left = find(value, node.left);
-    const right = find(value, node.right);
-
-    if (left) return left;
-    else if (right) return right;
+    return node;
   };
 
   const helperHeight = (node, left = 0, right = 0) => {
@@ -206,6 +203,7 @@ export function Tree(arr) {
 
     height: (value) => {
       const node = find(value, root);
+      console.log(node);
       return helperHeight(node);
     },
 
