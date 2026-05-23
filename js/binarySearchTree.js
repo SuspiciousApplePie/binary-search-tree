@@ -3,7 +3,7 @@ export function TreeNode(data, left = null, right = null) {
 }
 
 export function Tree(arr) {
-  const root = buildTree(arr);
+  let root = buildTree(arr);
   function buildTree(arr) {
     if (!arr.length) {
       return;
@@ -235,6 +235,14 @@ export function Tree(arr) {
 
     isBalance: () => {
       return helperIsBalance(root);
+    },
+
+    rebalance: () => {
+      arr = [];
+      helperPreOrderForEach((value) => {
+        arr.push(value);
+      }, root);
+      root = buildTree(arr);
     },
   };
 }
