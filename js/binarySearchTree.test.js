@@ -276,6 +276,25 @@ describe("Describe", () => {
 
   test("Undefined", () => {
     const tree = Tree([]);
-    expect(tree.isBalance()).toBe(undefined);
+    expect(tree.isBalance()).toBe(true);
+  });
+});
+
+describe("Rebalance", () => {
+  test("Rebalance the tree with unbalanced right", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    tree.insert(80);
+    tree.insert(75);
+    tree.rebalance();
+    expect(tree.isBalance()).toBe(true);
+  });
+
+  test("Rebalance the tree with unbalanced left", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    tree.insert(10);
+    tree.insert(5);
+    tree.insert(1);
+    tree.rebalance();
+    expect(tree.isBalance()).toBe(true);
   });
 });
