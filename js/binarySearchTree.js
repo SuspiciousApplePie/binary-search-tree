@@ -224,6 +224,7 @@ export function Tree(arr) {
     },
 
     height: (value) => {
+      if (!helperIncludes(value, root)) return;
       const node = find(value, root);
       return helperHeight(node);
     },
