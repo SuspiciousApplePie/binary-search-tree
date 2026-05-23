@@ -94,6 +94,20 @@ describe("Level For Each", () => {
 
     expect(values).toStrictEqual([40, 20, 60, 30, 50, 70]);
   });
+
+  test("The parameter is not function", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(() => tree.levelOrderForEach("ABC")).toThrow(
+      "No callback function found.",
+    );
+  });
+
+  test("There is no parameter assigned", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(() => tree.levelOrderForEach()).toThrow(
+      "No callback function found.",
+    );
+  });
 });
 
 describe("Level For Each loop", () => {
@@ -105,6 +119,20 @@ describe("Level For Each loop", () => {
     });
 
     expect(values).toStrictEqual([40, 20, 60, 30, 50, 70]);
+  });
+
+  test("The parameter is not function", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(() => tree.levelOrderForEachLoop("ABC")).toThrow(
+      "No callback function found.",
+    );
+  });
+
+  test("There is no parameter assigned", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(() => tree.levelOrderForEachLoop()).toThrow(
+      "No callback function found.",
+    );
   });
 });
 
@@ -118,6 +146,18 @@ describe("Inorder For Each loop", () => {
 
     expect(values).toStrictEqual([20, 30, 40, 50, 60, 70]);
   });
+
+  test("The parameter is not function", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(() => tree.inOrderForEach("ABC")).toThrow(
+      "No callback function found.",
+    );
+  });
+
+  test("There is no parameter assigned", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(() => tree.inOrderForEach()).toThrow("No callback function found.");
+  });
 });
 
 describe("Preorder For Each loop", () => {
@@ -130,6 +170,18 @@ describe("Preorder For Each loop", () => {
 
     expect(values).toStrictEqual([40, 20, 30, 60, 50, 70]);
   });
+
+  test("The parameter is not function", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(() => tree.preOrderForEach("ABC")).toThrow(
+      "No callback function found.",
+    );
+  });
+
+  test("There is no parameter assigned", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(() => tree.preOrderForEach()).toThrow("No callback function found.");
+  });
 });
 
 describe("Postorder For Each loop", () => {
@@ -141,6 +193,20 @@ describe("Postorder For Each loop", () => {
     });
 
     expect(values).toStrictEqual([30, 20, 50, 70, 60, 40]);
+  });
+
+  test("The parameter is not function", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(() => tree.postOrderForEach("ABC")).toThrow(
+      "No callback function found.",
+    );
+  });
+
+  test("There is no parameter assigned", () => {
+    const tree = Tree([20, 30, 40, 50, 60, 70]);
+    expect(() => tree.postOrderForEach()).toThrow(
+      "No callback function found.",
+    );
   });
 });
 

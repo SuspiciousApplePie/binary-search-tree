@@ -178,12 +178,17 @@ export function Tree(arr) {
     },
 
     levelOrderForEach: (callback) => {
+      if (typeof callback !== "function")
+        throw new Error("No callback function found.");
       const queue = Queue();
       queue.enqueue(root);
       helperLevelForEach(callback, queue);
     },
 
     levelOrderForEachLoop: (callback) => {
+      if (typeof callback !== "function")
+        throw new Error("No callback function found.");
+
       const queue = Queue();
       queue.enqueue(root);
 
@@ -199,14 +204,20 @@ export function Tree(arr) {
       }
     },
     inOrderForEach: (callback) => {
+      if (typeof callback !== "function")
+        throw new Error("No callback function found.");
       helperInOrderForEach(callback, root);
     },
 
     preOrderForEach: (callback) => {
+      if (typeof callback !== "function")
+        throw new Error("No callback function found.");
       helperPreOrderForEach(callback, root);
     },
 
     postOrderForEach: (callback) => {
+      if (typeof callback !== "function")
+        throw new Error("No callback function found.");
       helperPostOrder(callback, root);
     },
 
