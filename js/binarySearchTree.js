@@ -157,12 +157,14 @@ export function Tree(arr) {
   };
 
   const helperIsBalance = (node) => {
-    if (!node) return;
+    if (!node) return true;
+    const [left, right] = [
+      helperIsBalance(node.left),
+      helperIsBalance(node.right),
+    ];
 
     const result = helperHeight(node.left) - helperHeight(node.right);
-    if (result < 1 && result > -1) {
-      return true;
-    }
+    if (left && right && result <= 1 && result >= -1) return true;
     return false;
   };
   return {
